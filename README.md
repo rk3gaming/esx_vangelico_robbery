@@ -1,11 +1,7 @@
+This is a old fork from https://github.com/esx-community/esx_vangelico_robbery, this has been completey remastered and is completey different. For more reworks and cool new scripts check out my discord https://discord.gg/2DK7WaxKHU
+
 # esx_vangelico_robbery
 ESX Vangelico Robbery V 2.0.0
-
-[REQUIREMENTS]
-
-  * FiveM-ipl   => https://github.com/ESX-PUBLIC/fivem-ipl
-  * esx_policejob => https://github.com/ESX-Org/esx_policejob
-  * esx_ambulancejob => https://github.com/ESX-Org/esx_ambulancejob
 
 [INSTALLATION]
 
