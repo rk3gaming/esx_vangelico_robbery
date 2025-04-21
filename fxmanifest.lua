@@ -9,12 +9,11 @@ version '1.0.0'
 -- Redid the fxmanifest.lua.
 
 client_scripts {
-	'client/functions.lua',
-	'client/main.lua'
+	'client/*.lua',
 }
 
 server_scripts {
-	'server/main.lua'
+	'server/*.lua'
 }
 
 shared_scripts {
