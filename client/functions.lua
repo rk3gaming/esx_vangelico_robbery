@@ -1,6 +1,6 @@
 local holdingup = false
 local store = ""
-local vetrineRotte = 0 
+local brokenCases = 0 
 
 local function Notify(title, description, type)
     lib.notify({
@@ -28,7 +28,7 @@ local function ResetStoreCases(store)
     for i,_ in pairs(Locations.stores[store].display_cases) do 
         Locations.stores[store].caseStates[i].isOpen = false
     end
-    vetrineRotte = 0
+    brokenCases = 0
 end
 
 local function CreateBlip(coords, sprite, color, scale, name)
@@ -48,7 +48,7 @@ end
 return {
     holdingup = holdingup,
     store = store,
-    vetrineRotte = vetrineRotte,
+    brokenCases = brokenCases,
     Notify = Notify,
     PlayCaseEffects = PlayCaseEffects,
     PlayCaseAnimation = PlayCaseAnimation,
