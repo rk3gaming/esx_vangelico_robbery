@@ -1,4 +1,4 @@
-This is a old fork from https://github.com/esx-community/esx_vangelico_robbery, this has been completey remastered and is completey different. For more reworks and cool new scripts check out my discord https://discord.gg/2DK7WaxKHU
+This is a old fork from https://github.com/esx-community/esx_vangelico_robbery, this has been completey remastered and is completey different. 
 
 [Latest Preview]
 https://youtu.be/urB86c-D92I
