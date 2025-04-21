@@ -159,15 +159,15 @@ CreateThread(function()
                             F.PlayCaseEffects(case.x, case.y, case.z)
                             
                             F.Notify(_U('collectinprogress'), '', 'inform')
-                            Citizen.Wait(5000)
+                            Wait(5000)
                             ClearPedTasksImmediately(cache.ped)
                             
                             lib.callback('esx_vangelico_robbery:getJewels', false, function(success)
                                 if success then
                                     PlaySound(-1, "PICK_UP", "HUD_FRONTEND_DEFAULT_SOUNDSET", 0, 0, 1)
-                                    F.vetrineRotte = F.vetrineRotte + 1
+                                    F.brokenCases = F.brokenCases + 1
                                     
-                                    if F.vetrineRotte == Config.MaxWindows then 
+                                    if F.brokenCases == Config.MaxWindows then 
                                         F.ResetStoreCases(F.store)
                                         TriggerServerEvent('esx_vangelico_robbery:endrob', F.store)
                                         F.Notify(_U('lester'), '', 'success')
@@ -182,9 +182,9 @@ CreateThread(function()
                     end
                 end
             end
-            Citizen.Wait(0)
+            Wait(0)
         else
-            Citizen.Wait(1000)
+            Wait(1000)
         end
     end
 end)
@@ -262,7 +262,7 @@ CreateThread(function()
                 end
             end
         end
-        Citizen.Wait(sleep)
+        Wait(sleep)
     end
 end)
 
