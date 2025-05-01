@@ -12,21 +12,28 @@ function table.contains(table, element)
     return false
 end
 
-local function CountCops()
-	local xPlayers = ESX.GetPlayers()
-	CopsConnected = 0
+AddEventHandler('esx:playerLoaded', function(source)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    if table.contains(Config.Police.Jobs, xPlayer.job.name) then
+        CopsConnected = CopsConnected + 1
+    end
+end)
 
-	for i=1, #xPlayers, 1 do
-		local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
-		if table.contains(Config.Police.Jobs, xPlayer.job.name) then
-			CopsConnected = CopsConnected + 1
-		end
-	end
+AddEventHandler('esx:playerDropped', function(source)
+    local xPlayer = ESX.GetPlayerFromId(source)
+    if xPlayer and table.contains(Config.Police.Jobs, xPlayer.job.name) then
+        CopsConnected = math.max(0, CopsConnected - 1)
+    end
+end)
 
-	SetTimeout(120 * 1000, CountCops)
-end
-
-CountCops()
+AddEventHandler('esx:setJob', function(source, job, lastJob)
+    if table.contains(Config.Police.Jobs, lastJob.name) then
+        CopsConnected = math.max(0, CopsConnected - 1)
+    end
+    if table.contains(Config.Police.Jobs, job.name) then
+        CopsConnected = CopsConnected + 1
+    end
+end)
 
 RegisterNetEvent('esx_vangelico_robbery:toofar')
 AddEventHandler('esx_vangelico_robbery:toofar', function(robb)
@@ -67,7 +74,6 @@ AddEventHandler('esx_vangelico_robbery:rob', function(robb)
 	if Locations.stores[robb] then
 		local store = Locations.stores[robb]
 
-		-- Initialize lastRobbed if it doesn't exist
 		if not store.lastRobbed then
 			store.lastRobbed = 0
 		end
@@ -167,4 +173,3 @@ end)
 lib.callback.register('esx_vangelico_robbery:conteggio', function(source)
     return CopsConnected
 end)
-
