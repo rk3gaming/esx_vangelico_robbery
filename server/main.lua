@@ -14,23 +14,23 @@ end
 
 AddEventHandler('esx:playerLoaded', function(source)
     local xPlayer = ESX.GetPlayerFromId(source)
-    if table.contains(Config.Police.Jobs, xPlayer.job.name) then
+    if lib.table.contains(Config.Police.Jobs, xPlayer.job.name) then
         CopsConnected = CopsConnected + 1
     end
 end)
 
 AddEventHandler('esx:playerDropped', function(source)
     local xPlayer = ESX.GetPlayerFromId(source)
-    if xPlayer and table.contains(Config.Police.Jobs, xPlayer.job.name) then
+    if xPlayer and lib.table.contains(Config.Police.Jobs, xPlayer.job.name) then
         CopsConnected = math.max(0, CopsConnected - 1)
     end
 end)
 
 AddEventHandler('esx:setJob', function(source, job, lastJob)
-    if table.contains(Config.Police.Jobs, lastJob.name) then
+    if lib.table.contains(Config.Police.Jobs, lastJob.name) then
         CopsConnected = math.max(0, CopsConnected - 1)
     end
-    if table.contains(Config.Police.Jobs, job.name) then
+    if lib.table.contains(Config.Police.Jobs, job.name) then
         CopsConnected = CopsConnected + 1
     end
 end)
@@ -51,7 +51,7 @@ AddEventHandler('esx_vangelico_robbery:endrob', function(robb)
 	
 	for i=1, #xPlayers, 1 do
 		local xPlayer = ESX.GetPlayerFromId(xPlayers[i])
-		if table.contains(Config.Police.Jobs, xPlayer.job.name) then
+		if lib.table.contains(Config.Police.Jobs, xPlayer.job.name) then
 			TriggerClientEvent('ox_lib:notify', xPlayers[i], {
 				title = _U('end'),
 				type = 'success'
