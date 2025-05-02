@@ -3,15 +3,6 @@ local CopsConnected  = 0
 local lastSold = {} 
 local Dispatch = require 'server.dispatch' 
 
-function table.contains(table, element)
-    for _, value in pairs(table) do
-        if value == element then
-            return true
-        end
-    end
-    return false
-end
-
 AddEventHandler('esx:playerLoaded', function(source)
     local xPlayer = ESX.GetPlayerFromId(source)
     if lib.table.contains(Config.Police.Jobs, xPlayer.job.name) then
